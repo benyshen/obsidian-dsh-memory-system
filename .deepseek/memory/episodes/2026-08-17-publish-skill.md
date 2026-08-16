@@ -22,3 +22,8 @@
 
 - 结论/产出：配置 `credential.helper = manager`（Git Credential Manager 2.6.0）并把 GitHub 凭据存入 Windows 凭据管理器，此后 `git push/pull` 无需手动带 token（沙箱隔离下 GCM 需完整权限访问凭据管理器）。README.md 改为英文完整版（7 个 shields.io 徽章：License/DSH-Skill/Language/Platform/Model/Probe/stars），新增 README.zh.md 中文版，均去除本机专属硬编码路径；已推送（commit c97b56f）。
 - 涉及：[[rec-aimemory-system]] · 主题：aimemory
+
+## 03:00 隐私审计与历史清理
+
+- 结论/产出：应要求全面扫描 GitHub 仓库隐私：发现并清理了 `C:\Users\SYF`（cordis.patch.yml，改为 `!!js` 环境变量推导）、`D:\AI\work` 路径（profile/records/episodes/preset.yml/probe 种子卡内嵌副本，改为 `$DSH_AIMEMORY_VAULT` 等通用表述）。因旧 git 历史含隐私字符串，放弃旧历史重建干净仓库（单 commit），强推覆盖线上（forced update 17b3959→1805270→f00bfc3）。最终线上全文件扫描 0 命中，本地扫描 0 命中，探针 17/17 通过。
+- 涉及：[[rec-aimemory-system]] · 主题：aimemory
