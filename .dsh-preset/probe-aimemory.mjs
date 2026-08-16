@@ -62,11 +62,11 @@ hook:
 # 建立 AImemory 长期记忆体系
 
 ## 内容
-2026-08-16 在 D:\\AI\\work\\AImemory 参考 dsh-obsidian-math 建立了 DeepSeek Harness 的长期记忆体系：五层记忆（profile/topics/records/episodes/inbox）、note_recall 统一检索、每日记忆体检、捕获策略与备忘录生命周期。vault 根有 AGENTS.md 工作协议。
+2026-08-16 在本地 AImemory vault（\$DSH_AIMEMORY_VAULT）参考 dsh-obsidian-math 建立了 DeepSeek Harness 的长期记忆体系：五层记忆（profile/topics/records/episodes/inbox）、note_recall 统一检索、每日记忆体检、捕获策略与备忘录生命周期。vault 根有 AGENTS.md 工作协议。
 
 ## 证据
 - 来源事件：[[2026-08-16-bootstrap]]
-- 原始表述摘录：用户要求“在本地目录 D:\\AI\\work\\AImemory 打造一套 DeepSeek Harness 的长期记忆管理体系”
+- 原始表述摘录：用户要求"在本地目录打造一套 DeepSeek Harness 的长期记忆管理体系"
 
 ## 变更历史
 - 2026-08-16：创建
