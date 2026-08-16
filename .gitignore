@@ -1,0 +1,16 @@
+# machine/runtime artifacts
+node_modules/
+*.log
+.env
+.env.local
+
+# DeepSeek Harness / dsh runtime state inside the vault
+.deepseek/cache/
+.dsh/skills/
+sessions/
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/

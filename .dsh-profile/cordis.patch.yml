@@ -1,0 +1,77 @@
+# AImemory mode patch layer, applied after dsh-base + dsh-web-app.
+#
+# A patch replaces the targeted row's whole config, so each row below
+# restates the keys it owns.
+
+# The agent this profile defaults to: file read/write/search, dedicated note
+# tools (note_search / note_create / note_links), ask_user, plus the
+# cross-session memory plugin.
+- id: agent-presets
+  config:
+    default: aimemory
+    includeUserRoot: true
+
+# Default model route: DeepSeek (deepseek-official / deepseek-v4-flash), the
+# same provider the main web profile uses. The AImemory profile uses its own
+# settings file (settings.aimemory.yaml) so the main web profile's
+# settings.yaml is never touched. API key comes from $DSH_HOME/.credentials.yaml
+# (DEEPSEEK_API_KEY) or the DEEPSEEK_API_KEY environment variable.
+- id: settings
+  config:
+    path: !!js >-
+      (process.env.DSH_HOME || require('node:os').homedir() + '/.dsh') +
+      '/profiles/aimemory/settings.aimemory.yaml'
+
+- id: agent-default-model
+  config:
+    provider: deepseek-official
+    model: deepseek-v4-flash
+    reasoningEffort: high
+
+# Confine every model write to the AImemory vault (reads stay unrestricted,
+# matching the harness read model). Set DSH_AIMEMORY_VAULT to override the
+# machine-local default without editing this file.
+- id: sandbox-policy
+  config:
+    mode: workspace-write
+    workspaceRoot: !!js process.env.DSH_AIMEMORY_VAULT ?? process.cwd()
+
+# Default relative-path root for the filesystem backend.
+- id: fs-sandbox
+  config:
+    cwd: !!js process.env.DSH_AIMEMORY_VAULT ?? process.cwd()
+
+# Fail-closed approval: the AImemory mode never pops an "escalate to
+# danger-full-access?" prompt, so an accidental click cannot widen the write
+# boundary. Setting DSH_PERMISSION_MODE=danger-full-access explicitly (and
+# restarting) re-enables those prompts (approval: ask); the sandbox itself
+# stays workspace-write, so every widening beyond the vault still needs an
+# explicit per-operation confirmation.
+# NOTE: keep the folded-block `!!js >-` form — inline `? :` ternaries are
+# mis-parsed by js-yaml into a mapping ({...: 'never'}).
+- id: approval
+  config:
+    policy: !!js >-
+      (process.env.DSH_PERMISSION_MODE ?? 'workspace-write') ===
+      'danger-full-access' ? 'ask' : 'never'
+
+# The permission preset table must describe the composed default
+# (workspace-write sandbox + never approval), otherwise boot fails with
+# "composed sandbox and approval defaults match no preset".
+
+- id: permission
+  config:
+    defaultPreset: aimemory-locked
+    presets:
+      read-only:
+        sandbox: read-only
+        approval: ask
+      workspace-write:
+        sandbox: workspace-write
+        approval: ask
+      aimemory-locked:
+        sandbox: workspace-write
+        approval: never
+      danger-full-access:
+        sandbox: danger-full-access
+        approval: never

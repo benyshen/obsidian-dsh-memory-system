@@ -1,0 +1,11 @@
+# AImemory-mode patch overlay applied as an extra `dsh --patch` layer (pure CLI
+# use). This file is plugin-owned and always refreshed on update; user edits
+# belong in `cordis.patch.yml`.
+#
+# Auto-register the vault as a workspace so the web UI shows it in the
+# workspace picker immediately and never forces a directory-selection flow.
+- insert:
+    - id: aimemory-workspace
+      name: ./aimemory-workspace.mjs
+      config:
+        vaultPath: !!js process.env.DSH_AIMEMORY_VAULT
