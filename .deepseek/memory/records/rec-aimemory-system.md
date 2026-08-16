@@ -29,3 +29,4 @@ hook:
 ## 变更历史
 - 2026-08-16：创建
 - 2026-08-17：整理为 DSH skill 项目并发布 GitHub，证据见 [[2026-08-17-publish-skill]]
+- 2026-08-17：配置 GCM credential helper；README 英文版 + 徽章 + 中文版；隐私审计与 git 历史重写（线上 0 命中），证据见 [[2026-08-17-publish-skill]]

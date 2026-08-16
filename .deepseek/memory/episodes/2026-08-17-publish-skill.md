@@ -27,3 +27,8 @@
 
 - 结论/产出：应要求全面扫描 GitHub 仓库隐私：发现并清理了 `C:\Users\SYF`（cordis.patch.yml，改为 `!!js` 环境变量推导）、`D:\AI\work` 路径（profile/records/episodes/preset.yml/probe 种子卡内嵌副本，改为 `$DSH_AIMEMORY_VAULT` 等通用表述）。因旧 git 历史含隐私字符串，放弃旧历史重建干净仓库（单 commit），强推覆盖线上（forced update 17b3959→1805270→f00bfc3）。最终线上全文件扫描 0 命中，本地扫描 0 命中，探针 17/17 通过。
 - 涉及：[[rec-aimemory-system]] · 主题：aimemory
+
+## 03:30 记录收尾
+
+- 结论/产出：按 aimemory 协议补全三写：episode 追加收尾小节、rec-aimemory-system 变更历史补 08-17 条目、profile 沉淀公开稳定事实（GitHub 用户名 benyshen、注重隐私的发布偏好——仅记公开信息，邮箱等隐私不写入会发布的 profile.md）。最终提交 fe1a50b 已推送。
+- 涉及：[[rec-aimemory-system]] · 主题：aimemory

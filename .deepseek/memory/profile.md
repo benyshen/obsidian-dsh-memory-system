@@ -27,11 +27,13 @@ updated: 2026-08-16
 ## 工具与工作流
 
 - 记忆库：AImemory（vault: `$DSH_AIMEMORY_VAULT` 或仓库根）
-- （可补充：常用工具链、环境……）
+- GitHub：用户名 benyshen（公开），发布仓库用 GCM（credential.helper=manager）管理凭据，push 无需手动带 token
+- 技术栈：DeepSeek Harness + PowerShell 脚本 + Node.js/ESM 插件
 
 ## 长期授权
 
-- （待填充：用户说“以后默认这样”的事项，例如：关键想法默认写入备忘录）
+- 发布到 GitHub 的公开项目默认 public 可见
+- 发布前检查隐私（API key / 本机用户名 / 本地路径 / 邮箱不写入公开文件）；git 历史泄露时重建干净历史
 
 ## 修订历史
 
